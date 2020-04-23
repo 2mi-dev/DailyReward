@@ -1,0 +1,28 @@
+name: DailyReward
+version: "1.0"
+api-version: "1.15"
+description: "daily vote plugin"
+
+author: NavyOtter
+website: https://otter.navy/
+
+main: navy.otter.dailyreward.DailyRewardPlugin
+database: true
+depend: []
+softdepend: []
+
+permissions:
+  dailyreward.vote:
+    description: "Gives a reward to the player"
+    default: false
+  dailyreward.lastvote:
+    description: "Shows the last date a player has been rewarded"
+    default: op
+
+commands:
+  vote:
+    permission: "dailyreward.vote"
+    description: "main plugin function"
+  lastvote:
+    permission: "dailyreward.lastvote"
+    description: "Shows the last date a player has been rewarded"

@@ -1,0 +1,5 @@
+msg-prefix: "&r&8[&bVote&8]&7 "
+reward-fail-msg: "Du hast heute schon gevotet."
+reward-success-msg: "Vote erfolgreich."
+inventory-full-msg: "Dein Inventar ist voll! Versuch es noch mal."
+reward-amount: 3
