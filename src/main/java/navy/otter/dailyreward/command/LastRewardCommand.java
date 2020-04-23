@@ -3,14 +3,12 @@ package navy.otter.dailyreward.command;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.TimeZone;
 import java.util.UUID;
 import navy.otter.dailyreward.DailyRewardPlugin;
-import navy.otter.dailyreward.configuration.Configuration;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -35,10 +33,14 @@ public class LastRewardCommand implements CommandExecutor {
     Iterator<String> arg = Arrays.asList(strings).iterator();
     String option = arg.hasNext() ? arg.next() : "";
 
+    if(option == null || option.equals("")) {
+      return false;
+    }
+
     if (player.hasPermission("dailyreward.lastvote")) {
       String lastVote = getLastVote(option);
       player.sendMessage(ChatColor.translateAlternateColorCodes('&',
-          "&7Last vote of " + option + ": "));
+          "&7Last vote of " + option + ": " + lastVote));
       return true;
     }
     return false;
@@ -58,9 +60,7 @@ public class LastRewardCommand implements CommandExecutor {
       lastPlayerVote = playerMap.get(targetPlayer.getUniqueId());
     }
 
-    TimeZone tz = TimeZone.getTimeZone("UTC");
-    DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'");
-    df.setTimeZone(tz);
+    DateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 
     return df.format(new Date(lastPlayerVote));
   }

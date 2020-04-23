@@ -54,7 +54,7 @@ public class DbController {
     initDbConnection();
     Statement stmt = connection.createStatement();
     stmt.executeUpdate("CREATE TABLE IF NOT EXISTS player_votes ("
-        + " 'playerUUID' varchar(40), 'playerName' varchar(40), voteTime bigint);");
+        + " 'playerUUID' varchar(40) PRIMARY KEY, 'playerName' varchar(40), voteTime bigint);");
     closeDbConnection();
   }
 
@@ -74,7 +74,7 @@ public class DbController {
 
     while(rs.next()) {
       String uuidString = rs.getString(1);
-      long voteTime = rs.getInt(3);
+      long voteTime = rs.getLong(3);
 
       UUID uuid = UUID.fromString(uuidString);
 

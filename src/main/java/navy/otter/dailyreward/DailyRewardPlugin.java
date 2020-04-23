@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.Map;
 import java.util.UUID;
 import navy.otter.dailyreward.command.DailyRewardCommand;
+import navy.otter.dailyreward.command.LastRewardCommand;
 import navy.otter.dailyreward.configuration.Configuration;
 import navy.otter.dailyreward.database.DbController;
 import org.bukkit.Bukkit;
@@ -29,7 +30,7 @@ public class DailyRewardPlugin extends JavaPlugin {
       return;
     }
     this.getCommand("vote").setExecutor(new DailyRewardCommand());
-
+    this.getCommand("lastvote").setExecutor(new LastRewardCommand());
   }
 
   @Override
